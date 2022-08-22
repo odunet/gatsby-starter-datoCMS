@@ -70,6 +70,8 @@ export default function Header() {
     }
   }, [isOpen])
 
+  const navItemsUpdated = [...navItems, {id: 10101, navItemType: false, name: 'SSR', text: 'SSR',href:'/ssr',  navItems: []} ]
+
   return (
     <header>
       <Container className={desktopHeaderNavWrapper}>
@@ -81,8 +83,8 @@ export default function Header() {
           </NavLink>
           <nav>
             <FlexList gap={4}>
-              {navItems &&
-                navItems.map((navItem) => (
+              {navItemsUpdated &&
+                navItemsUpdated.map((navItem) => (
                   <li key={navItem.id}>
                     {navItem.navItemType === "Group" ? (
                       <NavItemGroup
@@ -139,7 +141,7 @@ export default function Header() {
         <div className={mobileNavOverlay}>
           <nav>
             <FlexList responsive variant="stretch">
-              {navItems?.map((navItem) => (
+              {navItemsUpdated?.map((navItem) => (
                 <li key={navItem.id}>
                   {navItem.navItemType === "Group" ? (
                     <NavItemGroup
